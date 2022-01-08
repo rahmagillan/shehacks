@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
@@ -12,12 +12,10 @@ import SearchIcon from '@mui/icons-material/Search';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import IconButton from '@mui/material/IconButton';
 
-export default function TranscriptList() {
+export default function TranscriptList(props) {
   
-    const [selectedIndex, setSelectedIndex] = useState(0)
-
-    const handleListItemClick = (index) => {
-        setSelectedIndex(index);
+    const handleListItemClick = (id) => {
+        props.setSelected(id);
     };
 
     return (
@@ -31,45 +29,22 @@ export default function TranscriptList() {
                 Add New Interview
             </Button>
             <List sx={{ width: '100%', maxWidth: 260, bgcolor: 'background.paper' }}>
-                <ListItem 
-                    alignItems="flex-start"
-                    selected={selectedIndex === 0}
-                    onClick={() => handleListItemClick(0)}
-                >
-                    <ListItemAvatar>
-                    <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-                    </ListItemAvatar>
-                    <ListItemText
-                    primary="Company A"
-                    secondary="January 9, 2022"
-                    />
-                </ListItem>
-                <ListItem 
-                    alignItems="flex-start"
-                    selected={selectedIndex === 1}
-                    onClick={() => handleListItemClick(1)}
-                >
-                    <ListItemAvatar>
-                    <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-                    </ListItemAvatar>
-                    <ListItemText
-                    primary="Company B"
-                    secondary="January 11, 2022"
-                    />
-                </ListItem>
-                <ListItem 
-                    alignItems="flex-start"
-                    selected={selectedIndex === 2}
-                    onClick={() => handleListItemClick(2)}
-                >
-                    <ListItemAvatar>
-                    <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-                    </ListItemAvatar>
-                    <ListItemText
-                    primary="Company C"
-                    secondary="January 10, 2022"
-                    />
-                </ListItem>
+                {props.data ? Object.keys(props.data).map((key) => { return (
+                    <ListItem 
+                        key={key}
+                        alignItems="flex-start"
+                        selected={props.selected === key}
+                        onClick={() => handleListItemClick(key)}
+                    >
+                        <ListItemAvatar>
+                            <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+                        </ListItemAvatar>
+                        <ListItemText
+                            primary={props.data[key]["company"]}
+                            secondary={props.data[key]["date"]}
+                        />
+                    </ListItem>
+                )}) : null }
             </List>
         </div>
     );

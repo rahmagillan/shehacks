@@ -21,5 +21,5 @@ def transcribe_file(speech_file):
         print(u"Transcript: {}".format(result.alternatives[0].transcript))
 
 # TEST
-# transcribe_file("test0.wav")
+transcribe_file("test0.wav")
 

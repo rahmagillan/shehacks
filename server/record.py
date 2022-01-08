@@ -9,4 +9,4 @@ def record(duration):
     wv.write("test0.wav", recording, freq, sampwidth=2)
 
 # Test
-# record(5)
+record(5)

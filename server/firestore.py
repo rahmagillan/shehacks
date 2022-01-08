@@ -33,7 +33,7 @@ def add_note(id, new_note):
     doc_ref = db.collection('transcripts').document(id)
     notes = doc_ref.get().to_dict()["notes"]
     notes.append(new_note)
-    doc_ref.set({
+    doc_ref.update({
         'notes': notes
     })
 
