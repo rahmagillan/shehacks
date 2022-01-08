@@ -12,7 +12,7 @@
 `cd server`
 
 ### Dependencies
-`pip install google-cloud-speech flask`
+`pip install google-cloud-speech flask sounddevice wavios`
 
 ### Set Up GCloud Auth
 1. Ask for the service account credentials
