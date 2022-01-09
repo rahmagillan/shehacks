@@ -9,6 +9,7 @@ import PlayArrowRounded from '@mui/icons-material/PlayArrowRounded';
 
 export default function AudioPlayer(props) {
     const [audio, setAudio] = useState()    
+    const [duration, setDuration] = useState()
 
     useEffect(() => {
         if (props.selected) {
@@ -26,7 +27,6 @@ export default function AudioPlayer(props) {
     const theme = useTheme();
     const [position, setPosition] = useState(0)
     const [paused, setPaused] = useState(true)
-    const duration = 200 // placeholder in seconds 
 
     function formatDuration(value) {
         const minute = Math.floor(value / 60);
@@ -48,6 +48,7 @@ export default function AudioPlayer(props) {
                 onClick={() => {
                     if (paused) {
                         audio.play()
+                        setDuration(audio.duration)
                     } else {
                         audio.pause()
                     }
@@ -71,7 +72,7 @@ export default function AudioPlayer(props) {
                     value={position}
                     min={0}
                     step={1}
-                    max={duration}
+                    max={duration ? duration : 0}
                     onChange={(_, value) => setPosition(value)}
                     sx={{
                         color: theme.palette.mode === 'dark' ? '#fff' : 'rgba(0,0,0,0.87)',
@@ -109,7 +110,7 @@ export default function AudioPlayer(props) {
                     }}
                     >
                     <TinyText>{formatDuration(position)}</TinyText>
-                    <TinyText>-{formatDuration(duration - position)}</TinyText>
+                    <TinyText>-{formatDuration(duration ? duration - position : 0)}</TinyText>
                 </Box>
             </Box>
         </Box>
