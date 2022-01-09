@@ -3,6 +3,7 @@ import ResponsiveAppBar from './ResponsiveAppBar.js'
 import React, { useState, useEffect } from 'react'
 import Interviews from './Interviews.js'
 import Applications from './Applications.js'
+import Growth from './Growth.js'
 
 function App() {
   const [page, setPage] = useState('Applications')
@@ -22,7 +23,7 @@ function App() {
       : page === 'Interviews' ? 
         <Interviews data={data} />
       : page === 'Growth' ? 
-        <div>Growth</div>
+        <Growth />
       : null}
     </div>
   );
