@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { styled, useTheme } from '@mui/material/styles'
 import Box from '@mui/material/Box'
 import Slider from '@mui/material/Slider'
@@ -7,7 +7,22 @@ import IconButton from '@mui/material/IconButton';
 import PauseRounded from '@mui/icons-material/PauseRounded';
 import PlayArrowRounded from '@mui/icons-material/PlayArrowRounded';
 
-export default function AudioPlayer() {
+export default function AudioPlayer(props) {
+    const [audio, setAudio] = useState()    
+
+    useEffect(() => {
+        if (props.selected) {
+            fetch(`http://127.0.0.1:5000/get-audio-file?filename=${props.selected}`)
+                .then(response => response.blob())
+                .then(blob => {
+                    const audio = new Audio()
+                    const objectURL = URL.createObjectURL(blob);
+                    audio.src = objectURL;
+                    setAudio(audio)
+                })
+        }
+    }, [props.selected])
+
     const theme = useTheme();
     const [position, setPosition] = useState(0)
     const [paused, setPaused] = useState(true)
@@ -30,14 +45,23 @@ export default function AudioPlayer() {
         <Box sx={{ display: 'flex', alignItems: 'center'}}>
             <IconButton
                 aria-label={paused ? 'play' : 'pause'}
-                onClick={() => setPaused(!paused)}
+                onClick={() => {
+                    if (paused) {
+                        audio.play()
+                    } else {
+                        audio.pause()
+                    }
+                    setPaused(!paused)
+                }}
             >
                 {paused ? (
                 <PlayArrowRounded
                     sx={{ fontSize: '3rem' }}
                 />
                 ) : (
-                <PauseRounded sx={{ fontSize: '3rem' }} />
+                <PauseRounded 
+                    sx={{ fontSize: '3rem' }} 
+                />
                 )}
             </IconButton>
             <Box sx={{ width: '100%' }}>
