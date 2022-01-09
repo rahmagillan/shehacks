@@ -24,12 +24,12 @@ export default function Notes(props) {
     return (
         <div style={{ backgroundColor: '#fafafa', height: '70vh', padding: '2em', margin: '2em' }}>
             <Box sx={{ margin: '1em' }}>
-                <Typography variant="h6">New Audio</Typography>
+                <Typography variant="h6">New Interview</Typography>
                 <TextField label="Company Name" variant="standard" />
                 <TextField label="Date" variant="standard" />
                 <Button style={{ margin: '1em', display: 'block' }} onClick={() => submitData()} variant="contained">Submit</Button>
             </Box>
-            {props.notes && props.notes.length == 0 ? <Typography variant="body1" style={{ height: '30vh', maxWidth: 360, margin: '1em', minWidth: 360, bgcolor: 'background.paper'}}>No notes have been added (type and hit enter below to add notes) ✍ </Typography> : 
+            {props.notes && props.notes.length === 0 ? <Typography variant="body1" style={{ height: '30vh', maxWidth: 360, margin: '1em', minWidth: 360, bgcolor: 'background.paper'}}>No notes have been added (type and hit enter below to add notes) ✍ </Typography> : 
             <List sx={{ height: '30vh', maxWidth: 360, margin: '1em', minWidth: 360, bgcolor: 'background.paper', overflowY: 'scroll' }}>
                 {props.notes ? props.notes.map((note, index) => {
                     return (
