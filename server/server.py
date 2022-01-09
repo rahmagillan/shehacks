@@ -42,7 +42,7 @@ def getTranscript():
     try:
         response = transcribe_file(args['filename'])
     except:
-        response = "No transcript for file"
+        response = "No transcript found or no file has been selected"
     return response
 
 

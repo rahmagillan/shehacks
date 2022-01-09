@@ -17,7 +17,7 @@ export default function TranscriptList(props) {
     };
 
     return (
-        <div>
+        <div style={{ backgroundColor: '#fafafa', height: '70vh', padding: '2em', margin: '2em' }}>
             <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
                 <SearchIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
                 <TextField id="search-input" label="Search" variant="standard" />

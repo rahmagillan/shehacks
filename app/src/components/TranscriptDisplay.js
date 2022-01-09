@@ -14,7 +14,7 @@ export default function TranscriptDisplay(props) {
     }, [props.selected])
 
     return (
-        <Box sx={{ flexGrow: '1', margin: '2em'}}>
+        <Box sx={{ flexGrow: '1', marginTop: '2em', marginBottom: '2em', backgroundColor: '#fafafa', height: '70vh', padding: '2em'}}>
             <AudioPlayer selected={props.selected} />
             <Box sx={{ padding: '2em' }}>
                 <Typography variant='body1'>

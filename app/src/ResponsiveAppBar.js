@@ -26,7 +26,7 @@ const ResponsiveAppBar = (props) => {
             component="div"
             sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
           >
-            JOB APP
+            IntelliView
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>

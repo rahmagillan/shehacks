@@ -22,14 +22,15 @@ export default function Notes(props) {
     }
 
     return (
-        <div>
-            <Box>
+        <div style={{ backgroundColor: '#fafafa', height: '70vh', padding: '2em', margin: '2em' }}>
+            <Box sx={{ margin: '1em' }}>
                 <Typography variant="h6">New Audio</Typography>
                 <TextField label="Company Name" variant="standard" />
                 <TextField label="Date" variant="standard" />
-                <Button onClick={() => submitData()} style={{ display: 'block' }} variant="contained">Submit</Button>
+                <Button style={{ margin: '1em', display: 'block' }} onClick={() => submitData()} variant="contained">Submit</Button>
             </Box>
-            <List sx={{ width: '100%', maxWidth: 360, minWidth: 360, bgcolor: 'background.paper', overflow: 'scroll', maxHeight: '60vh' }}>
+            {props.notes && props.notes.length == 0 ? <Typography variant="body1" style={{ height: '30vh', maxWidth: 360, margin: '1em', minWidth: 360, bgcolor: 'background.paper'}}>No notes have been added (type and hit enter below to add notes) ✍ </Typography> : 
+            <List sx={{ height: '30vh', maxWidth: 360, margin: '1em', minWidth: 360, bgcolor: 'background.paper', overflowY: 'scroll' }}>
                 {props.notes ? props.notes.map((note, index) => {
                     return (
                         <ListItem 
@@ -42,13 +43,16 @@ export default function Notes(props) {
                         </ListItem>
                     )
                 }) : null}
-            </List>
+            </List>}
             <TextField
-                label="New Note"
+                label="Add Note"
                 multiline
                 rows={4}
                 variant="standard"
                 onKeyDown={handleKeyDown}
+                style={{
+                    width: '100%'
+                }}
             />
         </div>
     )

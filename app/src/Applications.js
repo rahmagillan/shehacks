@@ -3,6 +3,11 @@
 import React, { useEffect, useState } from 'react'
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd'
 import Typography from '@mui/material/Typography'
+import Badge from '@mui/material/Badge'
+import ListItem from '@mui/material/ListItem'
+import ListItemAvatar from '@mui/material/ListItemAvatar'
+import Avatar from '@mui/material/Avatar'
+import ListItemText from '@mui/material/ListItemText'
 
 export default function Applications(props) {
     const [columns, setColumns] = useState({
@@ -101,13 +106,14 @@ export default function Applications(props) {
                 <div
                   style={{
                     padding: "1em",
+                    paddingTop: "2em",
                     display: "flex",
                     flexDirection: "column",
-                    alignItems: "center"
+                    alignItems: "center",
                   }}
                   key={columnId}
                 >
-                  <Typography variant='h6'>{column.name}{' '}{column.items.length}</Typography>
+                  <Typography variant='h6'>{column.name}<Badge style={{ marginLeft: "100px" }} badgeContent={column.items.length} color="primary"/></Typography>
                   <div style={{ margin: 8 }}>
                     <Droppable droppableId={columnId} key={columnId}>
                       {(provided, snapshot) => {
@@ -118,7 +124,7 @@ export default function Applications(props) {
                             style={{
                               background: snapshot.isDraggingOver
                                 ? "lightblue"
-                                : "lightgrey",
+                                : "#efefef",
                               padding: 4,
                               width: 250,
                               minHeight: 500
@@ -143,19 +149,23 @@ export default function Applications(props) {
                                           margin: "0 0 8px 0",
                                           minHeight: "50px",
                                           backgroundColor: snapshot.isDragging
-                                            ? "#263B4A"
-                                            : "#456C86",
+                                            ? "#eeeeee"
+                                            : "#fafafa",
                                           color: "white",
                                           ...provided.draggableProps.style
                                         }}
                                       >
-                                        <img alt={item.company} src={item.avatar} />
-                                        <div>
-                                          {item.company}
-                                        </div>
-                                        <div>
-                                            {item.date}
-                                        </div>
+                                        <ListItem 
+                                            alignItems="flex-start"
+                                        >
+                                            <ListItemAvatar>
+                                                <Avatar alt="Remy Sharp" src={item.avatar} />
+                                            </ListItemAvatar>
+                                            <ListItemText
+                                                primary={item.company}
+                                                secondary={item.date}
+                                            />
+                                        </ListItem>
                                       </div>
                                     );
                                   }}
