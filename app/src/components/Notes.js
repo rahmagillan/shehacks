@@ -2,6 +2,9 @@ import List from "@mui/material/List"
 import ListItem from "@mui/material/ListItem"
 import ListItemText from "@mui/material/ListItemText"
 import TextField from "@mui/material/TextField"
+import Box from "@mui/material/Box"
+import Typography from "@mui/material/Typography"
+import Button from '@mui/material/Button';
 
 export default function Notes(props) {
     const handleKeyDown = (event) => {
@@ -15,6 +18,12 @@ export default function Notes(props) {
 
     return (
         <div>
+            <Box>
+                <Typography variant="h6">New Audio</Typography>
+                <TextField label="Company Name" variant="standard" />
+                <TextField label="Date" variant="standard" />
+                <Button style={{ display: 'block' }} variant="contained">Submit</Button>
+            </Box>
             <List sx={{ width: '100%', maxWidth: 360, minWidth: 360, bgcolor: 'background.paper', overflow: 'scroll', maxHeight: '60vh' }}>
                 {props.notes ? props.notes.map((note, index) => {
                     return (
