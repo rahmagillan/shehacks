@@ -36,6 +36,7 @@ def add_note(id, new_note):
     doc_ref.update({
         'notes': notes
     })
+    return
 
 # get_data()
 # post_data("test2.wav", "Meta", "A long story about something", ["note 1", "note 2"], "January 10, 2022")

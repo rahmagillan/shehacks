@@ -9,7 +9,6 @@ function Interviews() {
     const [selected, setSelected] = useState()
 
     useEffect(() => {
-        // const res = await fetch('http://127.0.0.1:5000/get-data', { mode: 'no-cors'}) 
         fetch('http://127.0.0.1:5000/get-data')
             .then(response => response.json())
             .then(data => setData(data));
@@ -18,8 +17,8 @@ function Interviews() {
     return (
         <Box sx={{ display: 'flex' }}>
             <TranscriptList data={data} selected={selected} setSelected={setSelected} />
-            <TranscriptDisplay transcript={data && selected ? data[selected]["transcript"] : null} />
-            <Notes notes={data && selected ? data[selected]["notes"] : null} />
+            <TranscriptDisplay selected={selected} transcript={data && selected ? data[selected]["transcript"] : null} />
+            <Notes selected={selected} notes={data && selected ? data[selected]["notes"] : null} />
         </Box>
     )
 }

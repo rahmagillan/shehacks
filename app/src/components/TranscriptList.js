@@ -28,7 +28,7 @@ export default function TranscriptList(props) {
             <Button variant="outlined" startIcon={<AddCircleIcon />}>
                 Add New Interview
             </Button>
-            <List sx={{ width: '100%', maxWidth: 260, bgcolor: 'background.paper' }}>
+            <List sx={{ width: '100%', maxWidth: 260, minWidth: 260, bgcolor: 'background.paper' }}>
                 {props.data ? Object.keys(props.data).map((key) => { return (
                     <ListItem 
                         key={key}
