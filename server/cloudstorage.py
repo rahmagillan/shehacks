@@ -4,7 +4,7 @@ def upload_audio(filename): # set filename to id in firestore or something
     client = storage.Client()
     bucket = client.get_bucket('shehacks-audio')
     blob = bucket.blob(filename)
-    blob.upload_from_filename('test0.wav')
+    blob.upload_from_filename(filename)
 
 def list_audio():
     storage_client = storage.Client()
@@ -19,4 +19,5 @@ def get_audio(filename):
     client = storage.Client()
     bucket = client.get_bucket('shehacks-audio')
     blob = bucket.get_blob(filename)
+    print("FILE: ", filename)
     return blob

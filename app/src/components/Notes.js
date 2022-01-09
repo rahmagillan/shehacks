@@ -16,13 +16,18 @@ export default function Notes(props) {
         }
     }
 
+    function submitData() {
+        fetch(`http://127.0.0.1:5000/add-interview?company=Google&date=January 9, 2021`)
+            .then(() => window.location.reload(false))
+    }
+
     return (
         <div>
             <Box>
                 <Typography variant="h6">New Audio</Typography>
                 <TextField label="Company Name" variant="standard" />
                 <TextField label="Date" variant="standard" />
-                <Button style={{ display: 'block' }} variant="contained">Submit</Button>
+                <Button onClick={() => submitData()} style={{ display: 'block' }} variant="contained">Submit</Button>
             </Box>
             <List sx={{ width: '100%', maxWidth: 360, minWidth: 360, bgcolor: 'background.paper', overflow: 'scroll', maxHeight: '60vh' }}>
                 {props.notes ? props.notes.map((note, index) => {

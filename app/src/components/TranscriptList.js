@@ -4,8 +4,6 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button'
-import AddCircleIcon from '@mui/icons-material/AddCircle';
 import Box from '@mui/material/Box'
 import TextField from '@mui/material/TextField';
 import SearchIcon from '@mui/icons-material/Search';
@@ -25,9 +23,6 @@ export default function TranscriptList(props) {
                 <TextField id="search-input" label="Search" variant="standard" />
                 <IconButton><FilterListIcon /></IconButton>
             </Box>
-            <Button variant="outlined" startIcon={<AddCircleIcon />}>
-                Add New Interview
-            </Button>
             <List sx={{ width: '100%', maxWidth: 260, minWidth: 260, bgcolor: 'background.paper' }}>
                 {props.data ? Object.keys(props.data).map((key) => { return (
                     <ListItem 

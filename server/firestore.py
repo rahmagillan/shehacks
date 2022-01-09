@@ -20,13 +20,14 @@ def get_data():
 
     return data
 
-def post_data(id, company, transcript, notes, date):
+def post_data(id, company, notes, date):
     doc_ref = db.collection('transcripts').document(id)
     doc_ref.set({
-        'transcript': transcript,
         'date': date,
         'company': company,
-        'notes': notes
+        'notes': notes,
+        'stage': '2',
+        'avatar': 'https://logo.clearbit.com/google.com' #placeholders
     })
 
 def add_note(id, new_note):

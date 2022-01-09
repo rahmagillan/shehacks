@@ -17,8 +17,11 @@ def transcribe_file(speech_file):
 
     response = client.recognize(config=config, audio=audio)
 
+    transcript = ""
     for result in response.results:
-        print(u"Transcript: {}".format(result.alternatives[0].transcript))
+        transcript += result.alternatives[0].transcript
+    print(transcript)
+    return transcript
 
 # TEST
 transcribe_file("test0.wav")
