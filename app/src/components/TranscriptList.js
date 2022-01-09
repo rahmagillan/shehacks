@@ -37,7 +37,7 @@ export default function TranscriptList(props) {
                         onClick={() => handleListItemClick(key)}
                     >
                         <ListItemAvatar>
-                            <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+                            <Avatar alt="Remy Sharp" src={props.data ? props.data[key]["avatar"] : null} />
                         </ListItemAvatar>
                         <ListItemText
                             primary={props.data[key]["company"]}
